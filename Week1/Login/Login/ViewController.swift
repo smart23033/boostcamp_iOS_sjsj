@@ -8,18 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController,UITextFieldDelegate {
+    
+    //    MARK: Properties
+    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        idTextField.delegate = self
+        passwordTextField.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    //    MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-
+    
+    //    MARK: Actions
+    @IBAction func signIn(_ sender: UIButton) {
+        print("touch up inside - sign in")
+        print("ID : \(idTextField.text!), PW : \(passwordTextField.text!)" )
+    }
+    @IBAction func signUp(_ sender: UIButton) {
+        print("touch up inside - sign up")
+    }
 
 }
 
