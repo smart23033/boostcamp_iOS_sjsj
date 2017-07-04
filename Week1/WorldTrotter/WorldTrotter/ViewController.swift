@@ -24,8 +24,6 @@ class ViewController: UIViewController {
 //        view.addSubview(secondView)
         firstView.addSubview(secondView)
         */
-        
-        
     }
 }
 

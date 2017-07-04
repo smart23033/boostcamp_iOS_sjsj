@@ -9,7 +9,7 @@ let constStr = str
 
 var netxtYear : Int
 var bodyTemp : Float
-var hasPer : Bool
+var hasPet : Bool
 //var arrayOfInts : Array<Int>
 var arrayOfInts : [Int]
 //var dictionaryOfCapitalsByCountry : Dictionary<String, String>
@@ -85,24 +85,26 @@ for (space,name) in nameByParkingSpace{
 }
 
 enum PieType : Int{
-    case Apple = 0
-    case Cherry
-    case Pecan
+    case apple = 0
+    case cherry
+    case pecan
 }
 
-let favoritePie = PieType.Apple
+let favoritePie = PieType.apple
 
 let name: String
 switch favoritePie {
-case .Apple:
+case .apple:
     name = "Apple"
-case .Cherry:
+case .cherry:
     name = "Cherry"
-case .Pecan:
+case .pecan:
     name = "Pecan"
+default:
+    name = "Other"
 }
 
-let pieRawValue = PieType.Pecan.rawValue
+let pieRawValue = PieType.pecan.rawValue
 if let pieType = PieType(rawValue: pieRawValue){
 //    pieType!이 유효한 값을 갖면다면
 }
