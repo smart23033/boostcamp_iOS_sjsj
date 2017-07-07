@@ -40,6 +40,15 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         return numberFormatter
     }()
     
+    // MARK: View LifeCycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print("ConversionViewController loaded its view")
+        
+    }
+    
     // MARK: Methods
     
     func updateCelsiusLabel() {
