@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A27D5A0B1F0F2911004B67DE /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27D5A0A1F0F2911004B67DE /* RatingControl.swift */; };
 		A2FCBE321F07A2EA0097BF5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCBE311F07A2EA0097BF5C /* AppDelegate.swift */; };
 		A2FCBE341F07A2EA0097BF5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCBE331F07A2EA0097BF5C /* ViewController.swift */; };
 		A2FCBE371F07A2EA0097BF5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FCBE351F07A2EA0097BF5C /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A27D5A0A1F0F2911004B67DE /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		A2FCBE2E1F07A2EA0097BF5C /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FCBE311F07A2EA0097BF5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2FCBE331F07A2EA0097BF5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				A2FCBE311F07A2EA0097BF5C /* AppDelegate.swift */,
 				A2FCBE331F07A2EA0097BF5C /* ViewController.swift */,
+				A27D5A0A1F0F2911004B67DE /* RatingControl.swift */,
 				A2FCBE351F07A2EA0097BF5C /* Main.storyboard */,
 				A2FCBE381F07A2EA0097BF5C /* Assets.xcassets */,
 				A2FCBE3A1F07A2EA0097BF5C /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2FCBE341F07A2EA0097BF5C /* ViewController.swift in Sources */,
+				A27D5A0B1F0F2911004B67DE /* RatingControl.swift in Sources */,
 				A2FCBE321F07A2EA0097BF5C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +305,7 @@
 				A2FCBE421F07A2EA0097BF5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
