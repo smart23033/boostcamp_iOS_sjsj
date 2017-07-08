@@ -49,6 +49,10 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+       view.backgroundColor = randomColor()
+    }
+    
     // MARK: Methods
     
     func updateCelsiusLabel() {
@@ -58,6 +62,12 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         else {
             celsiusLabel.text = "???"
         }
+    }
+    
+    func randomColor() -> UIColor {
+        let colors = [UIColor.red, .orange, .yellow, .green, .blue, .purple, .brown, .white, .darkGray]
+        let randomChoice = Int(arc4random_uniform(9))
+        return colors[randomChoice]
     }
     
     // MARK: Actions
@@ -81,13 +91,19 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         
         let existingTextHasDecimalSeparator = textField.text?.range(of: ".")
         let replacementTextHasDecialSeparator = string.range(of: ".")
-        
-        if existingTextHasDecimalSeparator != nil && replacementTextHasDecialSeparator != nil {
+        let replacementTextHasLetters = string.rangeOfCharacter(from: NSCharacterSet.letters)
+    
+        if replacementTextHasLetters != nil {
             return false
         }
-        else {
+        else if existingTextHasDecimalSeparator != nil && replacementTextHasDecialSeparator != nil {
+            return false
+        }
+        else
+        {
             return true
         }
+        
     }
     
 }
