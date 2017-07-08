@@ -23,16 +23,18 @@ struct myLocation {
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
+    // MARK: Properties
+    
     var mapView: MKMapView!
     var currentLocationButton: UIButton!
     var pinControlButton: UIButton!
     var myLocations: [myLocation] = []
-    
-    //keeps track of current pin index:
     var selectedAnnotationIndex: Int = -1
     
+    // MARK: View
+    
     override func loadView() {
-        // 지도 뷰 생성
+
         mapView = MKMapView()
         mapView.delegate = self
         
@@ -47,13 +49,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
         
-        let topConstraint = segmentedControl.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 8)
-        let leadingConstraint = segmentedControl.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor)
-        let trailingConstraint = segmentedControl.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        let segmentedControlTopConstraint = segmentedControl.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 8)
+        let segmentedControlLeadingConstraint = segmentedControl.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor)
+        let segmentedControlTrailingConstraint = segmentedControl.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         
-        topConstraint.isActive = true
-        leadingConstraint.isActive = true
-        trailingConstraint.isActive = true
+        segmentedControlTopConstraint.isActive = true
+        segmentedControlLeadingConstraint.isActive = true
+        segmentedControlTrailingConstraint.isActive = true
         
         currentLocationButton = UIButton(type: .custom)
         currentLocationButton.setImage(#imageLiteral(resourceName: "CurrentLocation"), for: .normal)
@@ -63,8 +65,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         currentLocationButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(currentLocationButton)
         
-        let locationButtonTopConstraint = currentLocationButton.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20)
-        let locationButtonTrailingConstraint = currentLocationButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5)
+        let locationButtonTopConstraint
+            = currentLocationButton.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20)
+        let locationButtonTrailingConstraint
+            = currentLocationButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5)
         
         locationButtonTopConstraint.isActive = true
         locationButtonTrailingConstraint.isActive = true
@@ -74,10 +78,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         myLocations.append(myLocation(name: "InterestingPlace", lat: 37.010407662727205, long: 127.05465741532114532114))
         
         for location in myLocations {
-            let pin = MKPointAnnotation()
-            pin.coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
-            pin.title = location.name
-            mapView.addAnnotation(pin)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+            annotation.title = location.name
+            mapView.addAnnotation(annotation)
         }
         
         pinControlButton = UIButton(type: .infoLight)
@@ -104,6 +108,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: Methods
     
+    // Change map type when segmented control value is changed
     func mapTypeChanged(segControl: UISegmentedControl){
         switch segControl.selectedSegmentIndex {
         case 0:
@@ -117,6 +122,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    // Update user location when currentLocationButton is clicked
     func updateUserLocation() {
         print("updateUserLocation is clicked")
         
@@ -126,16 +132,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.showsUserLocation = true
     }
     
+    // show next annotation when pinControlButton is clicked
     func showNextPin() {
         
-        //data checks:
-        if !(mapView.annotations.count > 0) {
+        guard mapView.annotations.count > 0 else {
             return
         }
         
-        //go to next annotation or back to start if last one:
         selectedAnnotationIndex += 1
-        if selectedAnnotationIndex >= mapView.annotations.count {
+        if selectedAnnotationIndex == mapView.annotations.count {
             selectedAnnotationIndex = 0
         }
         
@@ -149,16 +154,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        print("Log: did update user location")
         
         let currentLocation = mapView.userLocation.location
         
         if let currentLocation = currentLocation {
             let location = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
             
-            print("Log: currentLocation is \(location)")
+            print("currentLocation : \(location)")
             
-            let span = MKCoordinateSpanMake(0.04, 0.04) // 1 degree ~ 0.0175 radian
+            let span = MKCoordinateSpanMake(0.04, 0.04)
             let region = MKCoordinateRegion(center: location, span: span)
             
             mapView.setRegion(region, animated: true)
