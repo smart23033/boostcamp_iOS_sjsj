@@ -12,6 +12,9 @@
 		A2EC5A8D1F11188A00CF0B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2EC5A8B1F11188A00CF0B7E /* Main.storyboard */; };
 		A2EC5A8F1F11188A00CF0B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2EC5A8E1F11188A00CF0B7E /* Assets.xcassets */; };
 		A2EC5A921F11188A00CF0B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2EC5A901F11188A00CF0B7E /* LaunchScreen.storyboard */; };
+		A2EC5A9A1F1118EC00CF0B7E /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EC5A991F1118EC00CF0B7E /* Line.swift */; };
+		A2EC5A9D1F11191700CF0B7E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC5A9C1F11191700CF0B7E /* CoreGraphics.framework */; };
+		A2EC5A9F1F11197C00CF0B7E /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EC5A9E1F11197C00CF0B7E /* DrawView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		A2EC5A8E1F11188A00CF0B7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2EC5A911F11188A00CF0B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2EC5A931F11188A00CF0B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2EC5A991F1118EC00CF0B7E /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Line.swift; path = ../Line.swift; sourceTree = "<group>"; };
+		A2EC5A9C1F11191700CF0B7E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A2EC5A9E1F11197C00CF0B7E /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2EC5A9D1F11191700CF0B7E /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,7 @@
 			children = (
 				A2EC5A861F11188900CF0B7E /* TouchTracker */,
 				A2EC5A851F11188900CF0B7E /* Products */,
+				A2EC5A9B1F11191700CF0B7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				A2EC5A871F11188A00CF0B7E /* AppDelegate.swift */,
+				A2EC5A991F1118EC00CF0B7E /* Line.swift */,
+				A2EC5A9E1F11197C00CF0B7E /* DrawView.swift */,
 				A2EC5A891F11188A00CF0B7E /* ViewController.swift */,
 				A2EC5A8B1F11188A00CF0B7E /* Main.storyboard */,
 				A2EC5A8E1F11188A00CF0B7E /* Assets.xcassets */,
@@ -62,6 +72,14 @@
 				A2EC5A931F11188A00CF0B7E /* Info.plist */,
 			);
 			path = TouchTracker;
+			sourceTree = "<group>";
+		};
+		A2EC5A9B1F11191700CF0B7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2EC5A9C1F11191700CF0B7E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +114,7 @@
 				TargetAttributes = {
 					A2EC5A831F11188900CF0B7E = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 545YH7RGRQ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,7 +155,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2EC5A9A1F1118EC00CF0B7E /* Line.swift in Sources */,
 				A2EC5A8A1F11188A00CF0B7E /* ViewController.swift in Sources */,
+				A2EC5A9F1F11197C00CF0B7E /* DrawView.swift in Sources */,
 				A2EC5A881F11188A00CF0B7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +281,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 545YH7RGRQ;
 				INFOPLIST_FILE = TouchTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsj.TouchTracker;
@@ -272,6 +294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 545YH7RGRQ;
 				INFOPLIST_FILE = TouchTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsj.TouchTracker;
