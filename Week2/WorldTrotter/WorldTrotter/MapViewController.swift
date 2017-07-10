@@ -26,6 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Properties
     
     var mapView: MKMapView!
+    var locationManager : CLLocationManager!
     var currentLocationButton: UIButton!
     var pinControlButton: UIButton!
     var myLocations: [myLocation] = []
@@ -124,9 +125,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Update user location when currentLocationButton is clicked
     func updateUserLocation() {
-        print("updateUserLocation is clicked")
+        locationManager = CLLocationManager()
         
-        let locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         
         mapView.showsUserLocation = true
