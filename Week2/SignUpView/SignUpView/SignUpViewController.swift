@@ -66,7 +66,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = true
-        
+       
         present(imagePickerController, animated: true, completion: nil)
     
     }
@@ -98,7 +98,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // The info dictionary may contain multiple representations of the image. You want to use the original.
-        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+        guard let selectedImage = info[UIImagePickerControllerEditedImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
