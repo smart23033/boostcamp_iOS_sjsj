@@ -75,7 +75,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         locationButtonTrailingConstraint.isActive = true
         
         myLocations.append(myLocation(name: "Hometown", lat: 37.210407662727205, long: 127.11465741532114532114))
-        myLocations.append(myLocation(name: "CurrentLocation", lat: 37.610407662727205, long: 127.01465741532114532114))
+//        myLocations.append(myLocation(name: "CurrentLocation", lat: 37.610407662727205, long: 127.01465741532114532114))
         myLocations.append(myLocation(name: "InterestingPlace", lat: 37.010407662727205, long: 127.05465741532114532114))
         
         for location in myLocations {
@@ -166,6 +166,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let region = MKCoordinateRegion(center: location, span: span)
             
             mapView.setRegion(region, animated: true)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+            annotation.title = "CurrentLocation"
+            mapView.addAnnotation(annotation)
         }
     
     }
