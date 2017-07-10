@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  Login
 //
 //  Created by 김성준 on 2017. 7. 1..
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITextFieldDelegate {
+class LoginViewController: UIViewController,UITextFieldDelegate {
     
     //    MARK: Properties
     @IBOutlet weak var idTextField: UITextField!

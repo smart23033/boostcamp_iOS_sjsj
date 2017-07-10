@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SignUpViewController.swift
 //  SignUpView
 //
 //  Created by 김성준 on 2017. 7. 10..
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: Outlets
     
@@ -69,6 +69,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         present(imagePickerController, animated: true, completion: nil)
     
+    }
+    
+    @IBAction func didTapCancelButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapSignUpButton(_ sender: UIButton) {
+        if passwordTextField.text == passwordCheckTextField.text {
+            dismiss(animated: true, completion: nil)
+        }
+        else {
+            print("check password")
+        }
     }
     
     @IBAction func didTapBackgroundView(_ sender: UITapGestureRecognizer) {
