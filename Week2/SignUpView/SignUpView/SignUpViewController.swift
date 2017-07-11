@@ -33,23 +33,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Methods
-    
-     // Hide the keyboard.
-    func hideKeyboard() {
-       
-        idTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-        passwordCheckTextField.resignFirstResponder()
-        contentTextView.resignFirstResponder()
-        
-    }
-    
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
      
-        hideKeyboard()
+        self.view.endEditing(true)
         
         return true
     }
@@ -58,7 +46,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         
-        hideKeyboard()
+       self.view.endEditing(true)
     
         let imagePickerController = UIImagePickerController()
         
@@ -85,7 +73,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     @IBAction func didTapBackgroundView(_ sender: UITapGestureRecognizer) {
-        hideKeyboard()
+        self.view.endEditing(true)
     }
 
     //MARK: UIImagePickerControllerDelegate
