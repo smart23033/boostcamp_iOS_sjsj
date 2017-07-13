@@ -131,12 +131,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ZJ5-4J-Mfk">
+                <tapGestureRecognizer id="ZJ5-4J-Mfk" userLabel="Tap Gesture Recognizer - ImageView">
                     <connections>
                         <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="MoO-xa-utf"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="aMk-0M-6nV">
+                <tapGestureRecognizer id="aMk-0M-6nV" userLabel="Tap Gesture Recognizer - View">
                     <connections>
                         <action selector="didTapBackgroundView:" destination="BYZ-38-t0r" id="Ozu-3b-8vj"/>
                     </connections>

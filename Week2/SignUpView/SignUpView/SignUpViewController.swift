@@ -64,7 +64,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     @IBAction func didTapSignUpButton(_ sender: UIButton) {
-        if passwordTextField.text == passwordCheckTextField.text {
+        if !(passwordTextField.text?.isEmpty)!, passwordTextField.text == passwordCheckTextField.text {
             dismiss(animated: true, completion: nil)
         }
         else {
