@@ -9,7 +9,7 @@
 import UIKit
 
 class ItemStore {
-//    var allItems = [Item]()
+    var allItems = [Item]()
     var ItemsByValue = [[Item](),[Item]()]
    
 //    func createItem() -> Item {
@@ -22,6 +22,8 @@ class ItemStore {
     
     func createItem(byValue value: Int = 50) -> Item {
         let newItem = Item(random: true)
+       
+        allItems.append(newItem)
         
         if newItem.valueInDollars > value {
             ItemsByValue[0].append(newItem)
