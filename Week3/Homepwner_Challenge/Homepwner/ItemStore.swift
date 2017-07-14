@@ -36,7 +36,7 @@ class ItemStore {
     }
     
     init() {
-        for _ in 0..<20 {
+        for _ in 0..<5 {
 //            createItem()
             createItem(byValue: 50)
         }
