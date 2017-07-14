@@ -23,7 +23,8 @@ class ItemViewController: UITableViewController {
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
         
-        tableView.rowHeight = 65
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 65
         
     }
 
@@ -100,6 +101,9 @@ class ItemViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
         let item = itemStore.allItems[indexPath.row]
+        
+        cell.updateLabels()
+        cell.updateColor(item: item)
         
 //        cell.textLabel?.text = item.name
 //        cell.detailTextLabel?.text = "$ \(item.valueInDollars)"
