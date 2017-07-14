@@ -26,20 +26,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Properties
     
     var mapView: MKMapView!
+    var locationManager : CLLocationManager!
     var currentLocationButton: UIButton!
     var pinControlButton: UIButton!
     var myLocations: [myLocation] = []
     var selectedAnnotationIndex: Int = -1
+    var savedLocation = CLLocation()
     
     // MARK: View
     
     override func loadView() {
-
+        
         mapView = MKMapView()
         mapView.delegate = self
         
         view = mapView
-    
+        
         let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
         segmentedControl.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
@@ -74,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         locationButtonTrailingConstraint.isActive = true
         
         myLocations.append(myLocation(name: "Hometown", lat: 37.210407662727205, long: 127.11465741532114532114))
-        myLocations.append(myLocation(name: "CurrentLocation", lat: 37.610407662727205, long: 127.01465741532114532114))
+        //        myLocations.append(myLocation(name: "CurrentLocation", lat: 37.610407662727205, long: 127.01465741532114532114))
         myLocations.append(myLocation(name: "InterestingPlace", lat: 37.010407662727205, long: 127.05465741532114532114))
         
         for location in myLocations {
@@ -97,6 +99,34 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         pinControlButtonTopConstraint.isActive = true
         pinControlButtonTrailingConstraint.isActive = true
         
+        let addPinButton = UIButton(type: .contactAdd)
+        
+        addPinButton.addTarget(self, action: #selector(addCurrentLocation), for: .touchUpInside)
+        
+        addPinButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(addPinButton)
+        
+        let addPinButtonTopConstraint
+            = addPinButton.topAnchor.constraint(equalTo: pinControlButton.bottomAnchor, constant: 20)
+        let addPinButtonTrailingConstraint
+            = addPinButton.trailingAnchor.constraint(equalTo: pinControlButton.trailingAnchor)
+        
+        addPinButtonTopConstraint.isActive = true
+        addPinButtonTrailingConstraint.isActive = true
+        
+        let distanceButton = UIButton(type: .detailDisclosure)
+        
+        distanceButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(distanceButton)
+        
+        distanceButton.addTarget(self, action: #selector(getDistance), for: .touchUpInside)
+        
+        let distanceButtonTopConstraint = distanceButton.topAnchor.constraint(equalTo: addPinButton.bottomAnchor, constant: 20)
+        let distanceButtonTrailingConstraint = distanceButton.trailingAnchor.constraint(equalTo: addPinButton.trailingAnchor)
+        
+        distanceButtonTopConstraint.isActive = true
+        distanceButtonTrailingConstraint.isActive = true
+        
     }
     
     override func viewDidLoad() {
@@ -107,6 +137,48 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // MARK: Methods
+    
+    // Get distance from savedLocation
+    func getDistance(){
+        
+        updateUserLocation()
+        
+        let currentLocation = mapView.userLocation.location
+       
+        if let currentLocation = currentLocation, savedLocation != currentLocation {
+            
+            print(savedLocation.distance(from: currentLocation))
+
+        }
+        
+    }
+    
+    // Add annotation at currentLocation
+    func addCurrentLocation() {
+
+        updateUserLocation()
+        
+        let currentLocation = mapView.userLocation.location
+        
+        if let currentLocation = currentLocation {
+            let location = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+            
+            print("currentLocation : \(location)")
+            
+            let span = MKCoordinateSpanMake(0.04, 0.04)
+            let region = MKCoordinateRegion(center: location, span: span)
+            
+            mapView.setRegion(region, animated: true)
+            
+            savedLocation = currentLocation
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+            annotation.title = "CurrentLocation"
+            mapView.addAnnotation(annotation)
+        }
+        
+    }
     
     // Change map type when segmented control value is changed
     func mapTypeChanged(segControl: UISegmentedControl){
@@ -124,12 +196,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Update user location when currentLocationButton is clicked
     func updateUserLocation() {
-        print("updateUserLocation is clicked")
+        locationManager = CLLocationManager()
         
-        let locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         
         mapView.showsUserLocation = true
+    
     }
     
     // show next annotation when pinControlButton is clicked
@@ -166,8 +238,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let region = MKCoordinateRegion(center: location, span: span)
             
             mapView.setRegion(region, animated: true)
+            
         }
-    
+        
     }
     
 }

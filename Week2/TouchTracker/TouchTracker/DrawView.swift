@@ -13,6 +13,7 @@ class DrawView: UIView {
 //    var currentLine: Line?
     var currentLines = [NSValue:Line]()
     var finishedLines = [Line]()
+    var selectedLineIndex: Int?
     
     @IBInspectable var finishedLineColor: UIColor = UIColor.black {
         didSet {
@@ -30,6 +31,60 @@ class DrawView: UIView {
         didSet {
             setNeedsDisplay()
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
+        doubleTapRecognizer.delaysTouchesBegan = true
+        doubleTapRecognizer.numberOfTapsRequired = 2
+        addGestureRecognizer(doubleTapRecognizer)
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
+        tapRecognizer.delaysTouchesBegan = true
+        tapRecognizer.require(toFail: doubleTapRecognizer)
+        addGestureRecognizer(tapRecognizer)
+    }
+    
+    func indexOfLineAtPoint(_ point: CGPoint) -> Int? {
+        //point와 가까운 선을 찾는다.
+        for (index, line) in finishedLines.enumerated() {
+            let begin = line.begin
+            let end = line.end
+            
+            //선 위의 포인트를 검사한다
+            for t in stride(from: CGFloat(0), to: 1.0, by: 0.05) {
+                let x = begin.x + ((end.x - begin.x) * t)
+                let y = begin.y + ((end.y - begin.y) * t)
+                
+                // 탭한 지점이 선과 20포인트 이내라면 이 선을 반환
+                if hypot(x - point.x, y - point.y) < 20.0 {
+                    return index
+                }
+            }
+        }
+        // 탭한 지점과 가까운 선이 없다면 선을 선택하지 않는다
+        return nil
+    }
+    
+    func tap(gestureRecognizer: UITapGestureRecognizer) {
+        print("Recognized a tap")
+        
+        let point = gestureRecognizer.location(in: self)
+        selectedLineIndex = indexOfLineAtPoint(point)
+        
+        setNeedsDisplay()
+    }
+    
+    func doubleTap(gestureRecognizer: UIGestureRecognizer) {
+        print("Recognized a double tap")
+        
+        selectedLineIndex = nil
+        currentLines.removeAll(keepingCapacity: false)
+        finishedLines.removeAll(keepingCapacity: false)
+        setNeedsDisplay()
+        
     }
     
     func strokeLine(line: Line) {
@@ -59,6 +114,12 @@ class DrawView: UIView {
         currentLineColor.setStroke()
         for (_, line) in currentLines {
             strokeLine(line: line)
+        }
+        
+        if let index = selectedLineIndex {
+            UIColor.green.setStroke()
+            let selectedLine = finishedLines[index]
+            strokeLine(line: selectedLine)
         }
         
     }
