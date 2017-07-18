@@ -31,15 +31,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="XP2-oa-zbX" appends="YES" id="GkG-zp-X6B"/>
-            </connections>
             <point key="canvasLocation" x="-82" y="-257"/>
         </view>
-        <tapGestureRecognizer id="XP2-oa-zbX">
-            <connections>
-                <action selector="didTapButton:" destination="-1" id="2m6-d2-TMd"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
 </document>

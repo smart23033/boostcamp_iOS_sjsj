@@ -4,18 +4,51 @@
 //
 //  Created by 김성준 on 2017. 7. 16..
 //  Copyright © 2017년 김성준. All rights reserved.
-//
+
 
 import UIKit
 
 class MyButton: UIView {
     
-    @IBOutlet var view: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var view: UIView!
     
-    var isSelected: Bool = false
-    var isHighlighted: Bool = false
+    var isSelected: Bool = false {
+        didSet {
+            if isSelected == true {
+                titleLabel.text = "selected"
+                titleLabel.textColor = UIColor.green
+            }
+            else {
+                titleLabel.text = "normal"
+                titleLabel.textColor = UIColor.yellow
+                
+            }
+        }
+    }
+    
+    var isHighlighted: Bool = false {
+        didSet {
+            if isHighlighted == true, isSelected == false {
+                titleLabel.text = "highlighted1"
+                titleLabel.textColor = UIColor.white
+            }
+            else if isHighlighted == true, isSelected == true {
+                titleLabel.text = "highlighted2"
+                titleLabel.textColor = UIColor.red
+            }
+            else if isHighlighted == false, isSelected == false {
+                titleLabel.text = "normal"
+                titleLabel.textColor = UIColor.yellow
+            }
+            else if isHighlighted == false, isSelected == true {
+                titleLabel.text = "selected"
+                titleLabel.textColor = UIColor.green
+            }
+        }
+    }
+    
     let notificationCenter = NotificationCenter.default
     
     // MARK: Initialization
@@ -31,6 +64,7 @@ class MyButton: UIView {
     }
     
     func setUp() {
+        
         Bundle.main.loadNibNamed("MyButton", owner: self, options: nil)
         
         self.addSubview(view)
@@ -42,44 +76,34 @@ class MyButton: UIView {
     // MARK: Touch Events
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(#function)
+        //        print(#function)
         
-        if view.isUserInteractionEnabled == true {
-            isHighlighted = true
-            highlightMyView(highlight: isHighlighted)
+        guard view.isUserInteractionEnabled == true else {
+            return
         }
+        
+        isHighlighted = true
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(#function)
+        //        print(#function)
         
-        if view.isUserInteractionEnabled == true {
-            isHighlighted = false
-            highlightMyView(highlight: isHighlighted)
+        guard view.isUserInteractionEnabled == true else {
+            return
         }
         
-    }
-    
-    // MARK: Actions
-    
-    @IBAction func didTapButton(_ sender: UITapGestureRecognizer) {
+        isHighlighted = false
+        didTapButton()
         
-        print("button tapped")
-        
-        if isSelected == false {
-            titleLabel.text = "selected"
-            titleLabel.textColor = UIColor.green
-            isSelected = true
-        }
-        else if isSelected == true {
-            titleLabel.text = "normal"
-            titleLabel.textColor = UIColor.yellow
-            isSelected = false
-        }
     }
     
     // MARK: Functions
+    
+    func didTapButton() {
+        print("button tapped")
+        isSelected = !isSelected
+    }
     
     func didToggleButton() {
         if view.isUserInteractionEnabled == true {
@@ -87,31 +111,16 @@ class MyButton: UIView {
             view.alpha = 0.5
             view.backgroundColor = UIColor.gray
         }
-        else {
+        else if view.isUserInteractionEnabled == false {
             view.isUserInteractionEnabled = true
             view.alpha = 1.0
             view.backgroundColor = UIColor.black
         }
+        
     }
     
-    func highlightMyView(highlight: Bool) {
+    func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents = .touchUpInside) {
         
-        if highlight == true, isSelected == false {
-            titleLabel.text = "highlighted1"
-            titleLabel.textColor = UIColor.white
-        }
-        else if highlight == true, isSelected == true {
-            titleLabel.text = "highlighted2"
-            titleLabel.textColor = UIColor.red
-        }
-        else if highlight == false, isSelected == false {
-            titleLabel.text = "normal"
-            titleLabel.textColor = UIColor.yellow
-        }
-        else if highlight == false, isSelected == true {
-            titleLabel.text = "selected"
-            titleLabel.textColor = UIColor.green
-        }
     }
     
 }

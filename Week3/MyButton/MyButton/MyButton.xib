@@ -11,44 +11,35 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyButton" customModule="MyButton" customModuleProvider="target">
             <connections>
-                <outlet property="imageView" destination="QJ2-dD-rEf" id="pZm-I3-fJD"/>
-                <outlet property="titleLabel" destination="fu2-s0-Pdo" id="4eR-rT-jj6"/>
-                <outlet property="view" destination="iN0-l3-epB" id="c0v-vR-ah4"/>
+                <outlet property="imageView" destination="HnZ-yJ-A12" id="Q6x-XG-eBI"/>
+                <outlet property="titleLabel" destination="idG-yn-pCG" id="YtY-Ot-hra"/>
+                <outlet property="view" destination="b1E-mq-lLn" id="FB7-W1-riF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="161" height="46"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+        <view contentMode="scaleToFill" id="b1E-mq-lLn">
+            <rect key="frame" x="0.0" y="0.0" width="153" height="53"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJ2-dD-rEf">
-                    <rect key="frame" x="0.0" y="0.0" width="161" height="46"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HnZ-yJ-A12">
+                    <rect key="frame" x="0.0" y="0.0" width="153" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <gestureRecognizers/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="normal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fu2-s0-Pdo">
-                    <rect key="frame" x="54" y="12.5" width="53" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="normal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idG-yn-pCG">
+                    <rect key="frame" x="49.5" y="16" width="53" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="0.95953627320000001" blue="0.26850988999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="fu2-s0-Pdo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ICg-CO-JPV"/>
-                <constraint firstItem="fu2-s0-Pdo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="leV-L8-8cE"/>
+                <constraint firstItem="idG-yn-pCG" firstAttribute="centerX" secondItem="b1E-mq-lLn" secondAttribute="centerX" id="VKp-cd-LkF"/>
+                <constraint firstItem="idG-yn-pCG" firstAttribute="centerY" secondItem="b1E-mq-lLn" secondAttribute="centerY" id="X5J-of-rds"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="zUC-Qc-uRt" appends="YES" id="vZg-J0-DH6"/>
-            </connections>
-            <point key="canvasLocation" x="-273.5" y="-203"/>
+            <point key="canvasLocation" x="-278.5" y="-371.5"/>
         </view>
-        <tapGestureRecognizer id="zUC-Qc-uRt">
-            <connections>
-                <action selector="didTapButton:" destination="-1" id="OtD-6c-CCa"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
 </document>
