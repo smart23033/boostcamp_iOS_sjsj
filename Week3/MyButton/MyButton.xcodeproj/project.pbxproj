@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A2AF5E801F1CCE6000767235 /* MyButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2AF5E7F1F1CCE6000767235 /* MyButton.xib */; };
+		A2BC86C21F1B174700019AD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BC86C11F1B174700019AD2 /* AppDelegate.swift */; };
+		A2BC86C41F1B174700019AD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BC86C31F1B174700019AD2 /* ViewController.swift */; };
+		A2BC86C71F1B174700019AD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2BC86C51F1B174700019AD2 /* Main.storyboard */; };
+		A2BC86C91F1B174700019AD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2BC86C81F1B174700019AD2 /* Assets.xcassets */; };
+		A2BC86CC1F1B174700019AD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2BC86CA1F1B174700019AD2 /* LaunchScreen.storyboard */; };
+		A2BC86D41F1B176400019AD2 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BC86D31F1B176400019AD2 /* MyButton.swift */; };
+		A2E3BD021F1D9D70005EE5C1 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E3BD011F1D9D70005EE5C1 /* ToggleButton.swift */; };
+		A2E3BD041F1D9DAF005EE5C1 /* ToggleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2E3BD031F1D9DAF005EE5C1 /* ToggleButton.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A2AF5E7F1F1CCE6000767235 /* MyButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyButton.xib; sourceTree = "<group>"; };
+		A2BC86BE1F1B174700019AD2 /* MyButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2BC86C11F1B174700019AD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A2BC86C31F1B174700019AD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A2BC86C61F1B174700019AD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A2BC86C81F1B174700019AD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2BC86CB1F1B174700019AD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A2BC86CD1F1B174700019AD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2BC86D31F1B176400019AD2 /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
+		A2E3BD011F1D9D70005EE5C1 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		A2E3BD031F1D9DAF005EE5C1 /* ToggleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToggleButton.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2BC86BB1F1B174700019AD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A2BC86B51F1B174700019AD2 = {
+			isa = PBXGroup;
+			children = (
+				A2BC86C01F1B174700019AD2 /* MyButton */,
+				A2BC86BF1F1B174700019AD2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A2BC86BF1F1B174700019AD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2BC86BE1F1B174700019AD2 /* MyButton.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A2BC86C01F1B174700019AD2 /* MyButton */ = {
+			isa = PBXGroup;
+			children = (
+				A2BC86C11F1B174700019AD2 /* AppDelegate.swift */,
+				A2BC86D31F1B176400019AD2 /* MyButton.swift */,
+				A2E3BD011F1D9D70005EE5C1 /* ToggleButton.swift */,
+				A2BC86C31F1B174700019AD2 /* ViewController.swift */,
+				A2BC86C51F1B174700019AD2 /* Main.storyboard */,
+				A2AF5E7F1F1CCE6000767235 /* MyButton.xib */,
+				A2E3BD031F1D9DAF005EE5C1 /* ToggleButton.xib */,
+				A2BC86C81F1B174700019AD2 /* Assets.xcassets */,
+				A2BC86CA1F1B174700019AD2 /* LaunchScreen.storyboard */,
+				A2BC86CD1F1B174700019AD2 /* Info.plist */,
+			);
+			path = MyButton;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A2BC86BD1F1B174700019AD2 /* MyButton */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2BC86D01F1B174700019AD2 /* Build configuration list for PBXNativeTarget "MyButton" */;
+			buildPhases = (
+				A2BC86BA1F1B174700019AD2 /* Sources */,
+				A2BC86BB1F1B174700019AD2 /* Frameworks */,
+				A2BC86BC1F1B174700019AD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyButton;
+			productName = MyButton;
+			productReference = A2BC86BE1F1B174700019AD2 /* MyButton.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A2BC86B61F1B174700019AD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "김성준";
+				TargetAttributes = {
+					A2BC86BD1F1B174700019AD2 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 545YH7RGRQ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A2BC86B91F1B174700019AD2 /* Build configuration list for PBXProject "MyButton" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A2BC86B51F1B174700019AD2;
+			productRefGroup = A2BC86BF1F1B174700019AD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2BC86BD1F1B174700019AD2 /* MyButton */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2BC86BC1F1B174700019AD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2BC86CC1F1B174700019AD2 /* LaunchScreen.storyboard in Resources */,
+				A2BC86C91F1B174700019AD2 /* Assets.xcassets in Resources */,
+				A2BC86C71F1B174700019AD2 /* Main.storyboard in Resources */,
+				A2AF5E801F1CCE6000767235 /* MyButton.xib in Resources */,
+				A2E3BD041F1D9DAF005EE5C1 /* ToggleButton.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A2BC86BA1F1B174700019AD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2E3BD021F1D9D70005EE5C1 /* ToggleButton.swift in Sources */,
+				A2BC86C41F1B174700019AD2 /* ViewController.swift in Sources */,
+				A2BC86C21F1B174700019AD2 /* AppDelegate.swift in Sources */,
+				A2BC86D41F1B176400019AD2 /* MyButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A2BC86C51F1B174700019AD2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2BC86C61F1B174700019AD2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A2BC86CA1F1B174700019AD2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2BC86CB1F1B174700019AD2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A2BC86CE1F1B174700019AD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A2BC86CF1F1B174700019AD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A2BC86D11F1B174700019AD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 545YH7RGRQ;
+				INFOPLIST_FILE = MyButton/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sjsj.MyButton;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A2BC86D21F1B174700019AD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 545YH7RGRQ;
+				INFOPLIST_FILE = MyButton/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sjsj.MyButton;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A2BC86B91F1B174700019AD2 /* Build configuration list for PBXProject "MyButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2BC86CE1F1B174700019AD2 /* Debug */,
+				A2BC86CF1F1B174700019AD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2BC86D01F1B174700019AD2 /* Build configuration list for PBXNativeTarget "MyButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2BC86D11F1B174700019AD2 /* Debug */,
+				A2BC86D21F1B174700019AD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A2BC86B61F1B174700019AD2 /* Project object */;
+}
