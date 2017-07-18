@@ -93,6 +93,15 @@ class MyButton: UIView {
             return
         }
         
+        let touch = touches.first
+        
+        let touchLocation = touch?.location(in: view)
+        
+        guard self.bounds.contains(touchLocation!) else {
+            isHighlighted = false
+            return
+        }
+        
         isHighlighted = false
         didTapButton()
         
