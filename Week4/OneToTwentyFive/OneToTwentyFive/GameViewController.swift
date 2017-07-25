@@ -21,22 +21,30 @@ class GameViewController: UIViewController {
     var startTime = 0.0
     
     var count = 1
-    let maximumCount = 25
+    let maximumCellNumber = 25
     var numberInCell: [Int] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
-    //    var cellsPerRow = 5
     
     var fileIOManager = IOManager()
     var data = Data()
     var users: [User] = []
     
+    var numberOfItemsPerRow = 5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+   
     }
     
     override func viewWillAppear(_ animated: Bool) {
+    
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
         users = [User]()
+        timerLabel.text = "00:00:00"
+
+        guard fileIOManager.readFile(fileName: "record".appending("txt"))?.isEmpty == false else {
+            return
+        }
         
         data = fileIOManager.readFile(fileName: "record".appending("txt"))!
         
@@ -60,7 +68,6 @@ class GameViewController: UIViewController {
         
         guard users.isEmpty == false else {
             topRecordLabel.text = "- --:--:--"
-            timerLabel.text = "00:00:00"
             return
         }
         
@@ -80,6 +87,10 @@ class GameViewController: UIViewController {
             self.numberInCell.append(i)
         }
         collectionView.reloadData()
+    }
+    
+    @IBAction func didTapHomeButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: Functions
@@ -104,6 +115,11 @@ class GameViewController: UIViewController {
         timerLabel.text = "\(strMinutes):\(strSeconds):\(strFraction)"
         
     }
+    
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        print(#function)
+    }
+    
 }
 
 
@@ -126,7 +142,7 @@ UICollectionViewDelegateFlowLayout {
             startTime -= 1.5
         }
         
-        if self.count > 1 {
+        if self.count > maximumCellNumber {
             timer.invalidate()
             playButton.isHidden = false
             
@@ -172,7 +188,7 @@ UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return maximumCount
+        return maximumCellNumber
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -196,12 +212,18 @@ UICollectionViewDelegateFlowLayout {
         return cell
     }
     
-    // adjust cells per row
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    //        let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-    //        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-    //        return CGSize(width: itemWidth, height: itemWidth)
-    //    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = flowLayout.sectionInset.left
+            + flowLayout.sectionInset.right
+            + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
+        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfItemsPerRow))
+        
+        return CGSize(width: size, height: size)
+        
+    }
     
 }

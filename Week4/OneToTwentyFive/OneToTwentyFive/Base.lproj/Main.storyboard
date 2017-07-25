@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="esv-dv-f8h">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,7 +40,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="XFd-7J-3H7" kind="custom" identifier="Play" customClass="RightToLeftSegue" customModule="OneToTwentyFive" customModuleProvider="target" id="qZ3-bu-AVa"/>
+                                            <segue destination="XFd-7J-3H7" kind="show" identifier="" id="qZ3-bu-AVa"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yeb-uL-dU1">
@@ -51,7 +51,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="rJq-Ve-u7g" kind="show" id="rfY-th-wQt"/>
+                                            <segue destination="rJq-Ve-u7g" kind="presentation" id="rfY-th-wQt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056.8" y="123.68815592203899"/>
+            <point key="canvasLocation" x="1996" y="123.68815592203899"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="LdX-jr-sQm">
@@ -179,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLw-bs-h6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885.5999999999999" y="410.64467766116945"/>
+            <point key="canvasLocation" x="2824.8000000000002" y="410.64467766116945"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="EJb-TN-LA6">
@@ -288,7 +288,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="custom" identifier="Home" customClass="LeftToRightSegue" customModule="OneToTwentyFive" customModuleProvider="target" id="FBf-mx-mc4"/>
+                                            <action selector="didTapHomeButton:" destination="XFd-7J-3H7" eventType="touchUpInside" id="4rq-WL-gE2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyJ-5R-MUZ">
@@ -298,7 +298,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="rJq-Ve-u7g" kind="show" id="PRw-PD-i1Q"/>
+                                            <segue destination="rJq-Ve-u7g" kind="presentation" id="PRw-PD-i1Q"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -330,10 +330,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2tU-Mf-S20" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885.5999999999999" y="-406.14692653673166"/>
+            <point key="canvasLocation" x="2824.8000000000002" y="-406.14692653673166"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KVR-xF-10m">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="esv-dv-f8h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tls-cP-Cqk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ivq-fM-iyg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DHa-sa-Iwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.8" y="123.68815592203899"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rfY-th-wQt"/>
+        <segue reference="PRw-PD-i1Q"/>
     </inferredMetricsTieBreakers>
 </document>

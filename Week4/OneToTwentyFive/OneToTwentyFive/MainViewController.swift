@@ -16,11 +16,12 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     
         self.titleLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         animateTitleTransitions()

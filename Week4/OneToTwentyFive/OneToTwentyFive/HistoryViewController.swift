@@ -20,9 +20,14 @@ class HistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         tableView.contentInset = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.size.height, left: 0, bottom: 0, right: 0)
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.size.height, left: 0, bottom: 0, right: 0)
+     
+        guard fileIOManager.readFile(fileName: "record".appending("txt"))?.isEmpty == false else {
+            return
+        }
         
         data = fileIOManager.readFile(fileName: "record".appending("txt"))!
         
