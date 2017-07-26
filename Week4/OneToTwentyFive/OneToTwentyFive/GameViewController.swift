@@ -24,54 +24,34 @@ class GameViewController: UIViewController {
     let maximumCellNumber = 25
     var numberInCell: [Int] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
     
-    var fileIOManager = IOManager()
-    var data = Data()
-    var users: [User] = []
-    
     var numberOfItemsPerRow = 5
+    
+    var topRecord: Record? {
+        didSet {
+            guard let record = topRecord else {
+                return topRecordLabel.text = "- --:--:--"
+            }
+            topRecordLabel.text = "\(record.name!) \(record.record!)"
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-    
+        
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        users = [User]()
         timerLabel.text = "00:00:00"
-
-        guard fileIOManager.readFile(fileName: "record".appending("txt"))?.isEmpty == false else {
-            return
+        
+        if !Records.sharedInstance.records.isEmpty {
+            topRecord = Records.sharedInstance.records.sorted { $0.record! < $1.record! }[0]
+        } else {
+            topRecord = nil
         }
         
-        data = fileIOManager.readFile(fileName: "record".appending("txt"))!
-        
-        var userDatas = String(data: data, encoding: String.Encoding.utf8)!.components(separatedBy: "\r\n")
-        userDatas.popLast()
-        
-        for userData in userDatas {
-            let user = User()
-            
-            var splitedUserData = userData.characters.split(separator: " ").map(String.init)
-            
-            user.name = splitedUserData[0]
-            user.record = splitedUserData[1]
-            user.date = splitedUserData[2] + " " + splitedUserData[3]
-            
-            users.append(user)
-            
-        }
-        
-        users.sort { $0.record! < $1.record! }
-        
-        guard users.isEmpty == false else {
-            topRecordLabel.text = "- --:--:--"
-            return
-        }
-        
-        topRecordLabel.text = "\(users[0].name!) \(users[0].record!)"
     }
     
     // MARK: Actions
@@ -142,7 +122,7 @@ UICollectionViewDelegateFlowLayout {
             startTime -= 1.5
         }
         
-        if self.count > maximumCellNumber {
+        if self.count > 1 {
             timer.invalidate()
             playButton.isHidden = false
             
@@ -150,18 +130,10 @@ UICollectionViewDelegateFlowLayout {
             let okAction = UIAlertAction(title: "OK", style: .default, handler: { alert -> Void in
                 let nameTextField = alertController.textFields![0] as UITextField
                 if nameTextField.text != "" {
-                    let user = User(name: nameTextField.text!, record: self.timerLabel.text!)
-                    self.fileIOManager.writeFile(fileName: "record".appending("txt"), result: user.description + "\r\n")
-            
-                    guard self.users.isEmpty == false else {
-                        self.users.append(user)
-                        self.topRecordLabel.text = "\(nameTextField.text!) \(self.timerLabel.text!)"
-                        return
-                    }
+                    let record = Record(name: nameTextField.text!, record: self.timerLabel.text!)
+                    Records.sharedInstance.records.append(record)
                     
-                    if user.record! < self.users[0].record! {
-                        self.topRecordLabel.text = "\(user.name!) \(user.record!)"
-                    }
+                    self.topRecord = Records.sharedInstance.records.sorted { $0.record! < $1.record! }[0]
                     
                 } else {
                     let errorAlert = UIAlertController(title: "Error", message: "Please input your name", preferredStyle: .alert)
@@ -183,8 +155,8 @@ UICollectionViewDelegateFlowLayout {
             alertController.addAction(cancelAction)
             
             self.present(alertController, animated: true, completion: nil)
-            
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -227,3 +199,4 @@ UICollectionViewDelegateFlowLayout {
     }
     
 }
+

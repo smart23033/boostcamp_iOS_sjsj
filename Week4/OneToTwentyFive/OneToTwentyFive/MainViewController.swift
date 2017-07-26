@@ -23,14 +23,15 @@ class MainViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     
-        self.titleLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         animateTitleTransitions()
     }
     
     func animateTitleTransitions() {
         UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat,.autoreverse], animations: { 
              self.titleLabel.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
-        }, completion: nil)
+        }, completion: { _ in 
+            self.titleLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
     }
     
 }

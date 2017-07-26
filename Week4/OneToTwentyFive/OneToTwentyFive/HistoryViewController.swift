@@ -12,10 +12,6 @@ class HistoryViewController: UIViewController {
     
     // MARK: Properties
     
-    var fileIOManager = IOManager()
-    var data = Data()
-    var users = [User]()
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -24,30 +20,7 @@ class HistoryViewController: UIViewController {
         
         tableView.contentInset = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.size.height, left: 0, bottom: 0, right: 0)
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.size.height, left: 0, bottom: 0, right: 0)
-     
-        guard fileIOManager.readFile(fileName: "record".appending("txt"))?.isEmpty == false else {
-            return
-        }
-        
-        data = fileIOManager.readFile(fileName: "record".appending("txt"))!
-        
-        var userDatas = String(data: data, encoding: String.Encoding.utf8)!.components(separatedBy: "\r\n")
-        userDatas.popLast()
-        
-        for userData in userDatas {
-            let user = User()
-            
-            var splitedUserData = userData.characters.split(separator: " ").map(String.init)
-            
-            user.name = splitedUserData[0]
-            user.record = splitedUserData[1]
-            user.date = splitedUserData[2] + " " + splitedUserData[3]
-            
-            users.append(user)
-            
-        }
-        
-        users.sort { $0.record! < $1.record! }
+
         
     }
     
@@ -61,9 +34,9 @@ class HistoryViewController: UIViewController {
         
         let alertController = UIAlertController(title: "Really?", message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "YES", style: .default, handler: { (UIAlertActionb) -> Void in
-            self.fileIOManager.clearFile(fileName: "record".appending("txt"))
-            self.users.removeAll()
+            Records.sharedInstance.records.removeAll()
             self.tableView.reloadData()
+
         })
         let cancelAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
         
@@ -83,19 +56,21 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell", for: indexPath) as! RecordCell
         
-        cell.nameLabel.text = "\(String(describing: users[indexPath.row].name!))   (\(String(describing: users[indexPath.row].date!)))"
-        cell.recordLabel.text = users[indexPath.row].record
+        let record = Records.sharedInstance.records.sorted{$0.record! < $1.record!}[indexPath.row]
+        
+        cell.nameLabel.text = "\(record.name!)   (\(record.date!)))"
+        cell.recordLabel.text = "\(record.record!)"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return Records.sharedInstance.records.count
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let title = "Delete \(users[indexPath.row].name!)"
+            let title = "Delete item"
             let message = "Are you sure you wanna delete this item?"
             
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
@@ -106,9 +81,8 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             let deleteAction = UIAlertAction(title: "Delete",
                                              style: .destructive,
                                              handler: { (action) -> Void in
-                                                //해당 유저를 파일에서 삭제하는 부분 추가해라
-                                                self.fileIOManager.removeItem(fileName: "record".appending("txt"), user: self.users[indexPath.row])
-                                                self.users.remove(at: indexPath.row)
+                                                let item = Records.sharedInstance.records[indexPath.row]
+                                                Records.sharedInstance.removeItem(item: item)
                                                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
             })
             
@@ -119,3 +93,4 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
