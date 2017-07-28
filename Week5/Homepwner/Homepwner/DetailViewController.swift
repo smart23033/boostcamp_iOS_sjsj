@@ -102,6 +102,11 @@ extension DetailViewController {
         
     }
     
+    @IBAction func removePicture(_ sender: UIBarButtonItem) {
+        imageView.image = nil
+        imageStore.deleteImageForKey(key: item.itemKey)
+    }
+    
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
         
@@ -125,7 +130,7 @@ extension DetailViewController: UINavigationControllerDelegate, UIImagePickerCon
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             imageStore.setImage(image: image, forKey: item.itemKey)
             imageView.image = image
         }

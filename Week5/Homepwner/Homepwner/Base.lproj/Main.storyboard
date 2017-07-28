@@ -192,6 +192,11 @@
                                             <action selector="takePicture:" destination="waU-NX-FuP" id="iBh-QZ-8bo"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="edit" id="jxx-M8-wYw">
+                                        <connections>
+                                            <action selector="removePicture:" destination="waU-NX-FuP" id="uag-GD-RpR"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
