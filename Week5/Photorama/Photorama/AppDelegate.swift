@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Homepwner
+//  Photorama
 //
-//  Created by 김성준 on 2017. 7. 14..
+//  Created by 김성준 on 2017. 7. 28..
 //  Copyright © 2017년 김성준. All rights reserved.
 //
 
@@ -12,19 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let itemStore = ItemStore()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let imageStore = ImageStore()
+        let rootViewController = window?.rootViewController as! UINavigationController
+        let photosViewController = rootViewController.topViewController as! PhotoViewController
+        photosViewController.store = PhotoStore()
         
-//        let itemsController = window!.rootViewController as! ItemViewController
-        let navController = window!.rootViewController as! UINavigationController
-        let itemsController = navController.topViewController as! ItemViewController
-        itemsController.itemStore = itemStore
-        itemsController.imageStore = imageStore
         return true
     }
 
@@ -34,13 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        let success = itemStore.saveChanges()
-        if success {
-            print("saved all of the items")
-        }
-        else {
-            print("could not save any of the items")
-        }
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
