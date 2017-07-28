@@ -31,7 +31,7 @@ class PhotoStore {
             (data, response, error) -> Void in
             let result = self.processRecentPhotosRequest(data: data, error: error)
             
-            print("URLResponse: \(response)")
+//            print("URLResponse: \(response)")
             
             completion(result)
         }
@@ -47,6 +47,11 @@ class PhotoStore {
     }
     
     func fetchImageForPhoto(photo: Photo, completion: @escaping (ImageResult) -> Void) {
+        
+        if let image = photo.image {
+            completion(.success(image))
+            return
+        }
         
         let photoURL = photo.remoteURL
         let request = URLRequest(url: photoURL)
