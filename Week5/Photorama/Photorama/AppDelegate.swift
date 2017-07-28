@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Homepwner
+//  Photorama
 //
-//  Created by 김성준 on 2017. 7. 14..
+//  Created by 김성준 on 2017. 7. 28..
 //  Copyright © 2017년 김성준. All rights reserved.
 //
 
@@ -17,14 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let itemStore = ItemStore()
-        let imageStore = ImageStore()
+        let rootViewController = window?.rootViewController as! UINavigationController
+        let photosViewController = rootViewController.topViewController as! PhotoViewController
+        photosViewController.store = PhotoStore()
         
-//        let itemsController = window!.rootViewController as! ItemViewController
-        let navController = window!.rootViewController as! UINavigationController
-        let itemsController = navController.topViewController as! ItemViewController
-        itemsController.itemStore = itemStore
-        itemsController.imageStore = imageStore
         return true
     }
 
