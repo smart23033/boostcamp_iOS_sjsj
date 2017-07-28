@@ -40,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveData() {
         let recordsData = NSKeyedArchiver.archivedData(withRootObject: Records.sharedInstance)
         userDefaults.set(recordsData, forKey: "recordsData")
-        
     }
     
     func loadData() {
