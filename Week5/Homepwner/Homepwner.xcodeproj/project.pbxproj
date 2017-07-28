@@ -15,6 +15,7 @@
 		A2972F0E1F185EEE00E7BAD4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2972F0D1F185EEE00E7BAD4 /* Item.swift */; };
 		A2972F101F18627D00E7BAD4 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2972F0F1F18627D00E7BAD4 /* ItemStore.swift */; };
 		A2972F121F18A57000E7BAD4 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2972F111F18A57000E7BAD4 /* ItemCell.swift */; };
+		A2ACAA2A1F2AFDAB00CA345E /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACAA291F2AFDAB00CA345E /* ImageStore.swift */; };
 		A2FE6F701F248B3B008D9513 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE6F6F1F248B3B008D9513 /* DetailViewController.swift */; };
 		A2FE6F721F2497D9008D9513 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE6F711F2497D9008D9513 /* CustomUITextField.swift */; };
 		A2FE6F741F249D0B008D9513 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE6F731F249D0B008D9513 /* DatePickerViewController.swift */; };
@@ -31,6 +32,7 @@
 		A2972F0D1F185EEE00E7BAD4 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		A2972F0F1F18627D00E7BAD4 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		A2972F111F18A57000E7BAD4 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		A2ACAA291F2AFDAB00CA345E /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		A2FE6F6F1F248B3B008D9513 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A2FE6F711F2497D9008D9513 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		A2FE6F731F249D0B008D9513 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				A2972F0D1F185EEE00E7BAD4 /* Item.swift */,
 				A2972F111F18A57000E7BAD4 /* ItemCell.swift */,
 				A2972F0F1F18627D00E7BAD4 /* ItemStore.swift */,
+				A2ACAA291F2AFDAB00CA345E /* ImageStore.swift */,
 				A2972EFD1F185D5900E7BAD4 /* ItemViewController.swift */,
 				A2FE6F6F1F248B3B008D9513 /* DetailViewController.swift */,
 				A2FE6F731F249D0B008D9513 /* DatePickerViewController.swift */,
@@ -160,6 +163,7 @@
 				A2972F101F18627D00E7BAD4 /* ItemStore.swift in Sources */,
 				A2FE6F701F248B3B008D9513 /* DetailViewController.swift in Sources */,
 				A2FE6F741F249D0B008D9513 /* DatePickerViewController.swift in Sources */,
+				A2ACAA2A1F2AFDAB00CA345E /* ImageStore.swift in Sources */,
 				A2FE6F721F2497D9008D9513 /* CustomUITextField.swift in Sources */,
 				A2972EFC1F185D5900E7BAD4 /* AppDelegate.swift in Sources */,
 				A2972F121F18A57000E7BAD4 /* ItemCell.swift in Sources */,

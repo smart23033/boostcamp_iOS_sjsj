@@ -47,7 +47,7 @@ class GameViewController: UIViewController {
         timerLabel.text = "00:00:00"
         
         if !Records.sharedInstance.records.isEmpty {
-            topRecord = Records.sharedInstance.records.sorted { $0.record! < $1.record! }[0]
+            topRecord = Records.sharedInstance.records.sorted { $0.record! < $1.record! }.first
         } else {
             topRecord = nil
         }
@@ -63,9 +63,12 @@ class GameViewController: UIViewController {
         
         startTime = NSDate.timeIntervalSinceReferenceDate
         
-        for i in 1...25 {
-            self.numberInCell.append(i)
-        }
+//        for i in 1...25 {
+//            self.numberInCell.append(i)
+//        }
+        
+        (1...25).forEach{ i in self.numberInCell.append(i)}
+        
         collectionView.reloadData()
     }
     
@@ -114,7 +117,8 @@ UICollectionViewDelegateFlowLayout {
         
         let cell = collectionView.cellForItem(at: indexPath) as! NumberCell
         
-        if cell.numberLabel.text! == String(self.count) {
+        if cell.numberLabel.text == String(self.count) {
+            print("\(cell.numberLabel.text == String(self.count)) \(cell.numberLabel.text) \(String(self.count))")
             cell.isHidden = true
             self.count += 1
         }
@@ -133,7 +137,7 @@ UICollectionViewDelegateFlowLayout {
                     let record = Record(name: nameTextField.text!, record: self.timerLabel.text!)
                     Records.sharedInstance.records.append(record)
                     
-                    self.topRecord = Records.sharedInstance.records.sorted { $0.record! < $1.record! }[0]
+                    self.topRecord = Records.sharedInstance.records.sorted { $0.record! < $1.record! }.first
                     
                 } else {
                     let errorAlert = UIAlertController(title: "Error", message: "Please input your name", preferredStyle: .alert)
