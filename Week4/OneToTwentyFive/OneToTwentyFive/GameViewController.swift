@@ -21,42 +21,37 @@ class GameViewController: UIViewController {
     var startTime = 0.0
     
     var count = 1
+    let maximumCellNumber = 25
     var numberInCell: [Int] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
-    //    var cellsPerRow = 5
     
-    var fileIOManager = IOManager()
-    var data = Data()
-    var users = [User]()
+    var numberOfItemsPerRow = 5
+    
+    var topRecord: Record? {
+        didSet {
+            guard let record = topRecord else {
+                return topRecordLabel.text = "- --:--:--"
+            }
+            topRecordLabel.text = "\(record.name!) \(record.record!)"
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        data = fileIOManager.readFile(fileName: "record".appending("txt"))!
         
-        var userDatas = String(data: data, encoding: String.Encoding.utf8)!.components(separatedBy: "\r\n")
-        userDatas.popLast()
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        print(userDatas)
+        timerLabel.text = "00:00:00"
         
-        for userData in userDatas {
-            let user = User()
-            
-            var splitedUserData = userData.characters.split(separator: " ").map(String.init)
-            
-            user.name = splitedUserData[0]
-            user.record = splitedUserData[1]
-            user.date = "(" + splitedUserData[2] + splitedUserData[3] + ")"
-            
-            users.append(user)
-            
+        if !Records.sharedInstance.records.isEmpty {
+            topRecord = Records.sharedInstance.records.sorted { $0.record! < $1.record! }[0]
+        } else {
+            topRecord = nil
         }
         
-        users.sort { $0.record! < $1.record! }
-        
-        topRecordLabel.text = "\(users[0].name!) \(users[0].record!)"
     }
     
     // MARK: Actions
@@ -72,6 +67,10 @@ class GameViewController: UIViewController {
             self.numberInCell.append(i)
         }
         collectionView.reloadData()
+    }
+    
+    @IBAction func didTapHomeButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: Functions
@@ -96,6 +95,11 @@ class GameViewController: UIViewController {
         timerLabel.text = "\(strMinutes):\(strSeconds):\(strFraction)"
         
     }
+    
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        print(#function)
+    }
+    
 }
 
 
@@ -118,8 +122,7 @@ UICollectionViewDelegateFlowLayout {
             startTime -= 1.5
         }
         
-        if self.count == 26 {
-            print("stop : \(timerLabel.text!)")
+        if self.count > 1 {
             timer.invalidate()
             playButton.isHidden = false
             
@@ -127,11 +130,11 @@ UICollectionViewDelegateFlowLayout {
             let okAction = UIAlertAction(title: "OK", style: .default, handler: { alert -> Void in
                 let nameTextField = alertController.textFields![0] as UITextField
                 if nameTextField.text != "" {
-                    let user = User(name: nameTextField.text!, record: self.timerLabel.text!)
-                    self.fileIOManager.writeFile(fileName: "record".appending("txt"), result: user.description + "\r\n")
-                    if user.record! < self.users[0].record! {
-                        self.topRecordLabel.text = "\(user.name!) \(user.record!)"
-                    }
+                    let record = Record(name: nameTextField.text!, record: self.timerLabel.text!)
+                    Records.sharedInstance.records.append(record)
+                    
+                    self.topRecord = Records.sharedInstance.records.sorted { $0.record! < $1.record! }[0]
+                    
                 } else {
                     let errorAlert = UIAlertController(title: "Error", message: "Please input your name", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {
@@ -152,12 +155,12 @@ UICollectionViewDelegateFlowLayout {
             alertController.addAction(cancelAction)
             
             self.present(alertController, animated: true, completion: nil)
-            
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 25
+        return maximumCellNumber
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -181,12 +184,19 @@ UICollectionViewDelegateFlowLayout {
         return cell
     }
     
-    // adjust cells per row
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    //        let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-    //        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-    //        return CGSize(width: itemWidth, height: itemWidth)
-    //    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = flowLayout.sectionInset.left
+            + flowLayout.sectionInset.right
+            + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
+        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfItemsPerRow))
+        
+        return CGSize(width: size, height: size)
+        
+    }
     
 }
+
