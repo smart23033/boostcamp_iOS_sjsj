@@ -18,21 +18,29 @@ class ImageDetailViewController: UIViewController {
             titleField.borderStyle = .none
         }
     }
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: UITextView! {
+        didSet {
+            textView.isEditable = false
+        }
+    }
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameField: UITextField! {
         didSet {
             nameField.isHidden = false
             nameField.borderStyle = .none
+            nameField.isEnabled = false
         }
     }
     @IBOutlet weak var dateField: UITextField! {
         didSet {
             dateField.isHidden = false
             dateField.borderStyle = .none
+            dateField.isEnabled = false
         }
     }
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    lazy var cancelButton: UIBarButtonItem! = {
+        return UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(touchUpCancelButton(_:)))
+    }()
     lazy var doneButton: UIBarButtonItem! = {
         return UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(touchUpDoneButton(_:)))
     }()
@@ -85,18 +93,7 @@ extension ImageDetailViewController {
             }
         }
         else {
-            self.imageView.isUserInteractionEnabled = true
-            
-            dateField.isHidden = true
-            nameField.isHidden = true
-            titleField.isEnabled = true
-            titleField.borderStyle = .roundedRect
-            
-            self.navigationItem.rightBarButtonItem = doneButton
-            
-            self.imagePicker.delegate = self
-            self.imagePicker.sourceType = .photoLibrary
-            self.imagePicker.allowsEditing = true
+            setEditableView()
         }
         
     }
@@ -108,7 +105,7 @@ extension ImageDetailViewController {
 extension ImageDetailViewController {
     
     func touchUpEditButton(_ sender: UIBarButtonItem){
-        
+        setEditableView()
     }
     
     func touchUpDeleteButton(_ sender: UIBarButtonItem) {
@@ -158,13 +155,27 @@ extension ImageDetailViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func touchUpCancelButton(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+    func touchUpCancelButton(_ sender: UIBarButtonItem) {
+       
+        if article != nil {
+            titleField.isEnabled = false
+            titleField.borderStyle = .none
+            textView.isEditable = false
+            imageView.isUserInteractionEnabled = false
+            
+            self.navigationItem.rightBarButtonItems = nil
+            self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.hidesBackButton = false
+            
+            self.navigationItem.rightBarButtonItems = [deleteButton,editButton]
+        }
+        else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func didTapImageView(_ sender: UITapGestureRecognizer) {
         self.endEditing()
-        print(#function)
         self.present(self.imagePicker, animated: true, completion: nil)
     }
     
@@ -180,6 +191,33 @@ extension ImageDetailViewController {
                 $0.endEditing(true)
             }
         }
+    }
+    
+    func setEditableView() {
+        
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.rightBarButtonItems = nil
+        self.imageView.isUserInteractionEnabled = true
+        
+        if article != nil {
+            dateField.isHidden = false
+            nameField.isHidden = false
+        }
+        else {
+            dateField.isHidden = true
+            nameField.isHidden = true
+        }
+        
+        titleField.isEnabled = true
+        titleField.borderStyle = .roundedRect
+        textView.isEditable = true
+    
+        self.navigationItem.leftBarButtonItem = cancelButton
+        self.navigationItem.rightBarButtonItem = doneButton
+        
+        self.imagePicker.delegate = self
+        self.imagePicker.sourceType = .photoLibrary
+        self.imagePicker.allowsEditing = true
     }
 }
 

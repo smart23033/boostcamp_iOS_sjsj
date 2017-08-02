@@ -154,11 +154,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="yxP-FP-3VC">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="crt-pN-mkf">
-                            <connections>
-                                <action selector="touchUpCancelButton:" destination="bSt-gN-8zB" id="0tz-Rr-z8e"/>
-                            </connections>
-                        </barButtonItem>
                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Image TItle" textAlignment="center" minimumFontSize="17" id="y4c-zB-Chb">
                             <rect key="frame" x="110.5" y="7" width="154" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -168,7 +163,6 @@
                         </textField>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="crt-pN-mkf" id="raV-b1-wvk"/>
                         <outlet property="dateField" destination="smB-sL-rR3" id="DX9-1r-PEY"/>
                         <outlet property="imageView" destination="6ai-cd-sy1" id="IJf-RZ-gQk"/>
                         <outlet property="nameField" destination="DfA-ru-dRg" id="bwc-XO-ZfR"/>
