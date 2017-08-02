@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -96,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="1598" y="945"/>
         </scene>
-        <!--Image Post View Controller-->
+        <!--Image Detail View Controller-->
         <scene sceneID="SXz-iE-0Zy">
             <objects>
-                <viewController id="bSt-gN-8zB" customClass="ImagePostViewController" customModule="ImageBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bSt-gN-8zB" customClass="ImageDetailViewController" customModule="ImageBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bnx-xf-HSp"/>
                         <viewControllerLayoutGuide type="bottom" id="5fF-G0-1IT"/>
@@ -152,9 +151,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ule-aB-FvJ" secondAttribute="trailing" id="uxl-Sr-ein"/>
                             <constraint firstItem="6ai-cd-sy1" firstAttribute="leading" secondItem="2qj-qW-SZB" secondAttribute="leading" id="ze5-4g-QdY"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Gdy-rq-OtS" appends="YES" id="n41-dd-bhq"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="yxP-FP-3VC">
                         <nil key="title"/>
@@ -164,19 +160,15 @@
                             </connections>
                         </barButtonItem>
                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Image TItle" textAlignment="center" minimumFontSize="17" id="y4c-zB-Chb">
-                            <rect key="frame" x="87.5" y="7" width="200" height="30"/>
+                            <rect key="frame" x="110.5" y="7" width="154" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="tdW-qo-LVx">
-                            <connections>
-                                <action selector="touchUpDoneButton:" destination="bSt-gN-8zB" id="nAG-tA-mY4"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="crt-pN-mkf" id="raV-b1-wvk"/>
                         <outlet property="dateField" destination="smB-sL-rR3" id="DX9-1r-PEY"/>
                         <outlet property="imageView" destination="6ai-cd-sy1" id="IJf-RZ-gQk"/>
                         <outlet property="nameField" destination="DfA-ru-dRg" id="bwc-XO-ZfR"/>
@@ -191,7 +183,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3224.8000000000002" y="943.17841079460277"/>
+            <point key="canvasLocation" x="2377" y="945"/>
         </scene>
         <!--Image Table View Controller-->
         <scene sceneID="iOU-lu-WIR">
@@ -261,7 +253,7 @@
                                     <outlet property="spinner" destination="job-0g-ztj" id="nF2-j0-JIy"/>
                                     <outlet property="titleLabel" destination="Kf6-vi-Vmh" id="ydA-Sv-mfG"/>
                                     <outlet property="userLabel" destination="rHL-pg-GZI" id="bHk-y6-M4B"/>
-                                    <segue destination="xQH-L8-CLd" kind="show" identifier="Detail" id="Tag-dL-7Aa"/>
+                                    <segue destination="bSt-gN-8zB" kind="show" identifier="Detail" id="TQn-Qi-cYD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -286,95 +278,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbM-Rd-c7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1598" y="178"/>
-        </scene>
-        <!--Title-->
-        <scene sceneID="tkH-Ze-iLg">
-            <objects>
-                <viewController id="xQH-L8-CLd" customClass="ImageDetailViewController" customModule="ImageBoard" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="E45-rG-i7j"/>
-                        <viewControllerLayoutGuide type="bottom" id="EvN-6A-eFz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XEy-eM-4Rp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="poI-Av-jHB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JQ-Je-vff">
-                                <rect key="frame" x="16" y="272" width="158" height="21"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ytt-Jp-I7x" appends="YES" id="sv8-BJ-TTQ"/>
-                                </connections>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateCreated" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3L-0h-KTl">
-                                <rect key="frame" x="182" y="277" width="177" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Content" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5m-gy-bBw">
-                                <rect key="frame" x="16" y="301" width="343" height="309"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="5JQ-Je-vff" firstAttribute="leading" secondItem="XEy-eM-4Rp" secondAttribute="leading" constant="16" id="0Gr-RO-hVa"/>
-                            <constraint firstItem="g5m-gy-bBw" firstAttribute="trailing" secondItem="XEy-eM-4Rp" secondAttribute="trailingMargin" id="0NI-Bi-uAq"/>
-                            <constraint firstItem="g5m-gy-bBw" firstAttribute="top" secondItem="5JQ-Je-vff" secondAttribute="bottom" constant="8" id="7mt-lH-rdn"/>
-                            <constraint firstAttribute="trailing" secondItem="5JQ-Je-vff" secondAttribute="trailing" constant="201" id="Avk-2x-xuS"/>
-                            <constraint firstItem="d3L-0h-KTl" firstAttribute="leading" secondItem="5JQ-Je-vff" secondAttribute="trailing" constant="8" id="FSY-hZ-Fam"/>
-                            <constraint firstAttribute="trailing" secondItem="poI-Av-jHB" secondAttribute="trailing" id="JTH-cP-p0R"/>
-                            <constraint firstItem="poI-Av-jHB" firstAttribute="height" secondItem="XEy-eM-4Rp" secondAttribute="height" multiplier="0.3" id="MoN-XB-mpb"/>
-                            <constraint firstItem="poI-Av-jHB" firstAttribute="leading" secondItem="XEy-eM-4Rp" secondAttribute="leading" id="MpN-Sh-e5W"/>
-                            <constraint firstAttribute="trailing" secondItem="d3L-0h-KTl" secondAttribute="trailing" constant="16" id="XhA-vA-9To"/>
-                            <constraint firstItem="5JQ-Je-vff" firstAttribute="top" secondItem="poI-Av-jHB" secondAttribute="bottom" constant="8" id="daO-Ms-Dlk"/>
-                            <constraint firstItem="d3L-0h-KTl" firstAttribute="bottom" secondItem="5JQ-Je-vff" secondAttribute="bottom" id="e4m-vp-ay2"/>
-                            <constraint firstItem="g5m-gy-bBw" firstAttribute="leading" secondItem="XEy-eM-4Rp" secondAttribute="leadingMargin" id="f9S-of-0ak"/>
-                            <constraint firstItem="poI-Av-jHB" firstAttribute="top" secondItem="E45-rG-i7j" secondAttribute="bottom" id="j5D-3D-B9g"/>
-                            <constraint firstItem="EvN-6A-eFz" firstAttribute="top" secondItem="g5m-gy-bBw" secondAttribute="bottom" constant="8" id="rsF-xd-Cej"/>
-                        </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="ytt-Jp-I7x" appends="YES" id="dSe-yE-Wf7"/>
-                        </connections>
-                    </view>
-                    <navigationItem key="navigationItem" title="Title" id="A22-rH-cyU">
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="trash" id="nSw-qO-bXJ">
-                                <connections>
-                                    <action selector="touchUpTrashButton:" destination="xQH-L8-CLd" id="ARp-In-aBa"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem style="plain" systemItem="edit" id="02Y-d3-uM7">
-                                <connections>
-                                    <action selector="touchUpEditButton:" destination="xQH-L8-CLd" id="S0T-Jq-ZFV"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="dateLabel" destination="d3L-0h-KTl" id="ner-5M-IhK"/>
-                        <outlet property="imageView" destination="poI-Av-jHB" id="H01-nd-ZT7"/>
-                        <outlet property="nameLabel" destination="5JQ-Je-vff" id="uZD-Eb-XAE"/>
-                        <outlet property="textView" destination="g5m-gy-bBw" id="MWk-mJ-Fgu"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jvf-sR-eoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ytt-Jp-I7x">
-                    <connections>
-                        <action selector="didTapNameLabel:" destination="xQH-L8-CLd" id="ofh-5X-rQO"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="3225" y="177"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wv6-R7-1pz">
@@ -540,7 +443,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYw-7e-Xqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376" y="944.52773613193415"/>
+            <point key="canvasLocation" x="2377" y="178"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="QG5-tN-W22"/>
+    </inferredMetricsTieBreakers>
 </document>
